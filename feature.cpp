@@ -8,7 +8,6 @@
 
 #include "ezsift.h"
 
-#include <iostream>
 #include <list>
 
 #define USE_FIX_FILENAME 0
@@ -39,7 +38,6 @@ int main(int argc, char *argv[])
     bool bExtractDescriptor = true;
     std::list<ezsift::SiftKeypoint> kpt_list;
 
-   
 
     // Generate output image with keypoints drawing
     char filename[255];
