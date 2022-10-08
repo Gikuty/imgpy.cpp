@@ -27,7 +27,10 @@ int main(int argc, char *argv[])
     memcpy(file1, argv[1], sizeof(char) * strlen(argv[1]));
     file1[strlen(argv[1])] = 0;
 #endif
-
+// Generate output image with keypoints drawing
+    char filename[255];
+    sprintf(filename, "%s_sift_output.ppm", file1);
+    ezsift::draw_keypoints_to_ppm_file(filename, image, kpt_list);
     ezsift::Image<unsigned char> image;
     if (ezsift::read_pgm(file1, image.data, image.w, image.h) != 0) {
         std::cerr << "Failed to open input image." << std::endl;
@@ -39,10 +42,7 @@ int main(int argc, char *argv[])
     std::list<ezsift::SiftKeypoint> kpt_list;
 
 
-    // Generate output image with keypoints drawing
-    char filename[255];
-    sprintf(filename, "%s_sift_output.ppm", file1);
-    ezsift::draw_keypoints_to_ppm_file(filename, image, kpt_list);
+    
 
     // Generate keypoints list
     sprintf(filename, "%s_sift_key.key", file1);
